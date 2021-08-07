@@ -12,6 +12,7 @@
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT_NAME = {{ cookiecutter.repo_name }}
 PYTHON_INTERPRETER = python
+PYTHON_VERSION = {{ cookiecutter.python_version }}
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -26,10 +27,14 @@ endif
 ## Set up python interpreter environment
 create_environment:
 	@echo ">>> Creating conda environment."
-	conda create --name $(PROJECT_NAME) python=3.8.11
-	@echo ">>> New conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
-	conda activate $(PROJECT_NAME)
-	conda conda env update -n $(PROJECT_NAME) --file conda-dev.yaml
+	conda create --yes --prefix ./envs python=$(PYTHON_VERSION)
+	conda env update --prefix ./envs --file conda-dev.yaml
+	git init
+	@echo ">>> New conda env created. Activate with:\nconda activate --prefix ./envs"
+
+# Make a conda environment file from the currently installed packages
+conda_env:
+	conda env export > conda-env.yaml
 
 ## Install Python Dependencies
 requirements:
@@ -46,8 +51,8 @@ clean:
 
 ## Format using isort and black
 codeformat:
-	isort
-	black
+	isort src
+	black src
 
 ## Lint using flake8
 lint:

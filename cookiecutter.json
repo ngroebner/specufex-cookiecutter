@@ -4,6 +4,7 @@
     "author_name": "Your name (or your organization/company/team)",
     "description": "A short description of the project.",
     "open_source_license": ["MIT", "BSD-3-Clause", "No license file"],
+    "python_version": ["3.9", "3.8", "3.7", "3.6"],
     "use_mlflow": "y",
     "create_environment": "y"
 }

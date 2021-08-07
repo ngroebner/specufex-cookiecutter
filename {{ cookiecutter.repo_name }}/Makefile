@@ -44,10 +44,14 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
+## Format using isort and black
+codeformat:
+	isort
+	black
+
 ## Lint using flake8
 lint:
 	flake8 src
-	black
 
 #################################################################################
 # PROJECT RULES                                                                 #

@@ -27,21 +27,16 @@ endif
 ## Set up python interpreter environment
 create_environment:
 	@echo ">>> Creating conda environment."
-	conda create --yes --prefix ./envs python=$(PYTHON_VERSION)
-	conda env update --prefix ./envs --file conda-dev.yaml
+	conda env create --file conda-env.yaml
 	git init
-	@echo ">>> New conda env created. Activate with:\nconda activate --prefix ./envs"
+	@echo ">>> New conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 
 # Make a conda environment file from the currently installed packages
-conda_env:
+save_env:
 	conda env export > conda-env.yaml
 
-## Install Python Dependencies
-requirements:
-	conda install -f conda.yaml
-
 ## Make Dataset
-data: requirements
+download_data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
 ## Delete all compiled Python files

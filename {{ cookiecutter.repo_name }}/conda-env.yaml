@@ -1,0 +1,23 @@
+name: {{ cookiecutter.repo_name }}
+channels:
+  - conda-forge
+  - default
+dependencies:
+  - python={{ cookiecutter.python_version }}
+  - pip
+  {% if cookiecutter.use_mlflow == 'y' %}
+  - mlflow
+  {% endif %}
+  {% if cookiecutter.install_numpy_stack == 'y' %}
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - jupyter
+  - jupyterlab
+  {% endif %}
+  {% if cookiecutter.install_dev == 'y' %}
+  - isort
+  - black
+  - flake8
+  {% endif %}

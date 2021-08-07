@@ -2,6 +2,14 @@
 
 A custom directory structure for machine learning experiments based on [cookiecutter-data-science](http://drivendata.github.io/cookiecutter-data-science/)
 
+## Things to add
+
+- Documentation!
+- init git repo, either in makefile or post hooks - better in make for reproducibility and transparency, since the post hook won't travel with the created repo
+- run initial make process in post hook? Could be an option in setup process.
+- choose package/environment manager - conda, poetry
+- first map out the entire environment and package management process
+
 ## Requirements to use the cookiecutter template
 
 - Python 3.6+
@@ -21,10 +29,8 @@ $ conda install cookiecutter
 ## To start a new project, run
 
 ``` bash
-cookiecutter -c v1 https://github.com/ngroebner/cookiecutter-ml-template
+cookiecutter https://github.com/ngroebner/cookiecutter-ml-template
 ```
-
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
 
 ## The resulting directory structure
 

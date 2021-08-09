@@ -2,14 +2,6 @@
 
 A custom directory structure for machine learning experiments based on [cookiecutter-data-science](http://drivendata.github.io/cookiecutter-data-science/)
 
-## Things to add
-
-- Documentation!
-- init git repo, either in makefile or post hooks - better in make for reproducibility and transparency, since the post hook won't travel with the created repo
-- run initial make process in post hook? Could be an option in setup process.
-- choose package/environment manager - conda, poetry
-- first map out the entire environment and package management process
-
 ## Requirements to use the cookiecutter template
 
 - Python 3.6+
@@ -32,57 +24,51 @@ $ conda install cookiecutter
 cookiecutter https://github.com/ngroebner/cookiecutter-ml-template
 ```
 
-## The resulting directory structure
+The setup script will walk you through choosing various option for your project. The options and defults are below.
 
-The directory structure of your new project looks like this:
+1. ```project_name [project_name]```
+The name of your project.
 
-```
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
-    ├── data
-    │   ├── external       <- Data from third party sources.
-    │   ├── interim        <- Intermediate data that has been transformed.
-    │   ├── processed      <- The final, canonical data sets for modeling.
-    │   └── raw            <- The original, immutable data dump.
-    │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-    │                         the creator's initials, and a short `-` delimited description, e.g.
-    │                         `1.0-jqp-initial-data-exploration`.
-    │
-    ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-    │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `pip freeze > requirements.txt`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported. Perhaps move to Poetry in the future.
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── noxfile.py            <- nox file with settings for running tox; see tox.readthedocs.io
-                                 nox is a test running framework
+2. ```repo_name [project_name]```
+Github repo name. This will also be the name of the root directory, and the name of the conda environment used for the project.
+
+3. ```author_name [Your name (or your organization/company/team)]:```
+
+4. ```description [A short description of the project.]:```
+
+5. ``` Select open_source_license:``` Choose the license for the ```LICENSE``` file.
+
+6. ```Select python_version:``` If yoou need a specific version for your packages
+
+7. ```install_numpy_stack [y]:``` Answering "yes" will add numpy, scipy, pandas, matplotlib, jupyter, and jupyterlab to the conda environment specification.
+
+8. ```use_mlflow [y]:``` Answering "yes" will add mlflow to the environment specification. mlflow can be used for, among other things, tracking hyperparameters used in each run.
+
+9. ```install_dev [y]:``` Answering "yes" will install isort, flake8, and black packages for linting and formatting code.
+
+10. ```create_environment [y]:``` Create a new conda envirronment with the packages you chose above. The name of the environment will be ```repo_name```.
+
+Cookiecutter will create a standard [directory structure](Directory_Structure.md).
 
 
---------
-```
+## How to use the new project
+
+```cd``` into the directory and activate the conda environment. Add any other packages you know you will need.
+
+In the ```src``` directory, write scripts to pull the raw data into the ```data/raw``` directory, preprocess that data for running your model, and saving the preprocessed data to the ```data/preprocessed``` directory.
+
+Create your model training code and put it in....
+
+## Make instructions
+
+The gnu utility make is used to run standard workflows and development stuff. This section will include a reference at some point.
+
+## Things to add
+
+- Documentation!
+- Perhaps have standard filenames for the processing steps, so that you can use ```make``` to run everything, without having to rewrite stuff in the Makefile. E.g:
+  - pull_data.py
+  - preprocess_data.py
+  - train.py
+  - transform.py/predict.py
+

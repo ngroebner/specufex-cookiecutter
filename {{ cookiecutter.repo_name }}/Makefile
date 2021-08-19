@@ -31,6 +31,11 @@ create_environment:
 	git init
 	@echo ">>> New conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 
+## Remove the conda environmet.
+remove_environment:
+	@echo ">>> Removing conda environment."
+	conda env remove -n $(PROJECT_NAME)
+
 # Make a conda environment file from the currently installed packages
 save_env:
 	conda env export > conda-env.yaml

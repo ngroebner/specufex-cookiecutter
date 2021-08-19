@@ -3,9 +3,7 @@
 The directory structure of your new project looks like this:
 
 ```
-    ├── LICENSE
-    ├── Makefile           <- Makefile with commands like `make data` or `make train`
-    ├── README.md          <- The top-level README for developers using this project.
+
     ├── data
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
@@ -22,11 +20,6 @@ The directory structure of your new project looks like this:
     │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
-    ├── conda-env.yaml   <- The requirements file for reproducing the analysis environment, e.g.
-    │                         generated with `make save_env`
-    │
-    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported.
     |
     ├── src                <- Source code for use in this project.
     │   ├── __init__.py    <- Makes src a Python module
@@ -44,7 +37,13 @@ The directory structure of your new project looks like this:
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
     │       └── visualize.py
-    │
-    └── noxfile.py         <- nox file with settings for running tox; see tox.readthedocs.io
-                              nox is a test running framework
+    |
+    ├── LICENSE
+    ├── Makefile           <- Makefile with commands like `make data` or `make train`
+    ├── README.md          <- The top-level README for developers using this project.
+    |── noxfile.py         <- nox file with settings for running tox; see tox.readthedocs.io
+    |                          nox is a test running framework
+    ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported.
+    ├── conda-env.yaml     <- The requirements file for reproducing the analysis environment, e.g.
+                              generated with `make save_env`
 ```

@@ -51,11 +51,11 @@ spectrograms:
 	2_convertToSpectrograms.py config.yaml
 
 .PHONY: fingerprints
-fingerprints:
+fingerprints: spectrograms
 	3_runSpecUFEx.py config.yaml
 
 .PHONY: distances
-distances:
+distances: fingerprints
 	4_DistanceCalc.py config.yaml
 
 .PHONY: energy
@@ -63,7 +63,7 @@ energy:
 	calculate_energy.py config.yaml
 
 .PHONY: clusters
-clusters:
+clusters: distances
 	run_kmeans.py config.yaml
 
 

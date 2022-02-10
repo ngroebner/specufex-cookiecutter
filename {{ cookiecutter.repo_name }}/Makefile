@@ -52,7 +52,19 @@ spectrograms:
 
 .PHONY: fingerprints
 fingerprints:
-	3_runSpecUFEx.py config.py
+	3_runSpecUFEx.py config.yaml
+
+.PHONY: distances
+distances:
+	4_DistanceCalc.py config.yaml
+
+.PHONY: energy
+energy:
+	calculate_energy.py config.yaml
+
+.PHONY: clusters
+clusters:
+	run_kmeans.py config.yaml
 
 
 ## Delete all compiled Python files

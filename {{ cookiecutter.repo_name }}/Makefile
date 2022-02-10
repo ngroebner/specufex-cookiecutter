@@ -26,8 +26,9 @@ endif
 
 ## Set up python interpreter environment
 create_environment:
-	@echo ">>> Creating conda environment."
+	@echo ">>> Creating environment."
 	conda env create --file conda-env.yaml
+	pip install -r requirements.txt
 	git init
 	@echo ">>> New conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 

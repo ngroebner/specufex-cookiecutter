@@ -1,10 +1,10 @@
-# This MAKEFILE allows setting up stabdard build processes for docs
+# This MAKEFILE allows setting up standard build processes
 # and also for running the experiment in a standard way.
 # Could be replaced with machine learning specific pipeline
 # packages if necessary.
 
-.PHONY: clean data lint requirements
-
+.PHONY: clean create_environment
+.PHONY: remove_environment save_env download_data
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
@@ -45,19 +45,21 @@ save_env:
 download_data:
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
+# this would work better with make if there were separate files
+# for every step
+.PHONY: spectrograms
+spectrograms:
+	2_convertToSpectrograms.py config.yaml
+
+.PHONY: fingerprints
+fingerprints:
+	3_runSpecUFEx.py config.py
+
+
 ## Delete all compiled Python files
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
-
-## Format using isort and black
-codeformat:
-	isort src
-	black src
-
-## Lint using flake8
-lint:
-	flake8 src
 
 #################################################################################
 # PROJECT RULES                                                                 #

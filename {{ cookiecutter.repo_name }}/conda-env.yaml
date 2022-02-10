@@ -4,11 +4,10 @@ channels:
   - default
 dependencies:
   - python={{ cookiecutter.python_version }}
-  - pip
   {% if cookiecutter.use_mlflow == 'y' %}
   - mlflow
   {% endif %}
-  {% if cookiecutter.install_numpy_stack == 'y' %}
+  - pip
   - numpy
   - scipy
   - pandas
@@ -16,7 +15,12 @@ dependencies:
   - scikit-learn
   - jupyter
   - jupyterlab
-  {% endif %}
+  - h5py
+  - tqdm
+  - seaborn
+  - numexpr
+  - obspy
+  - 
   {% if cookiecutter.install_dev == 'y' %}
   - isort
   - black

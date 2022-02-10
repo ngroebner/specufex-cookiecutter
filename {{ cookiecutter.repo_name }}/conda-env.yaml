@@ -5,19 +5,17 @@ channels:
 dependencies:
   - python={{ cookiecutter.python_version }}
   - pip
-  - numpy
+  - numpy=1.21.1
   - scipy
   - pandas
   - matplotlib
   - scikit-learn
-  - jupyter
-  - jupyterlab
+  - ipykernel
   - h5py
   - tqdm
   - seaborn
   - numexpr
   - obspy
-  - 
   {% if cookiecutter.install_dev == 'y' %}
   - isort
   - black

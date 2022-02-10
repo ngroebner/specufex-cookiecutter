@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - default
 dependencies:
-  - python={{ cookiecutter.python_version }}
+  - python=3.9
   - pip
   - numpy=1.21.1
   - scipy
@@ -16,8 +16,3 @@ dependencies:
   - seaborn
   - numexpr
   - obspy
-  {% if cookiecutter.install_dev == 'y' %}
-  - isort
-  - black
-  - flake8
-  {% endif %}

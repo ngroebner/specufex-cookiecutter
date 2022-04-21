@@ -21,7 +21,7 @@ $ conda install cookiecutter
 ## To start a new project, run
 
 ``` bash
-cookiecutter https://github.com/ngroebner/cookiecutter-ml-template
+cookiecutter https://github.com/ngroebner/specufex-cookiecutter
 ```
 
 The setup script will walk you through choosing various option for your project. The options and defults are below.
